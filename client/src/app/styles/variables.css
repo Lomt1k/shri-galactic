@@ -1,0 +1,16 @@
+:root {
+  /* Colors */ 
+  --color-white: #FFFFFF;
+  --color-black: #000000;
+  --color-maire: #201B10;
+  --color-selago: #FCE2FF;
+
+
+  /* Typography */
+  --ff-main: "Roboto", "Arial", sans-serif;
+
+
+  /* Transitions */
+  --transition-300: 0.3s ease;
+  
+}

@@ -1,5 +1,6 @@
 import { Routes, Route, Navigate } from 'react-router';
 import { AnalystPage, GeneratorPage, HistoryPage, NotFoundPage } from '@/pages';
+import './styles/main.css';
 
 function App() {
   return (
