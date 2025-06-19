@@ -1,10 +1,12 @@
+import './styles/main.css';
 import { Routes, Route, Navigate } from 'react-router';
 import { AnalystPage, GeneratorPage, HistoryPage, NotFoundPage } from '@/pages';
-import './styles/main.css';
+import { Header } from '@/shared/components';
 
 function App() {
   return (
     <>
+      <Header />
       <Routes>
         <Route path="*" element={<NotFoundPage />} />
         <Route path="/" element={<Navigate to="/analyst" replace />} />

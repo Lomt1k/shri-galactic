@@ -1,0 +1,31 @@
+.header {
+  padding: 40px 0 80px;
+}
+
+.header__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.header__left {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.header__logo {
+  outline: none;
+}
+
+.header__heading {
+  padding: 5px 6px 6px;
+  color: var(--color-maire);
+  background-color: var(--color-heliotrope);
+  font-size: 30px;
+  line-height: 90%;
+  font-weight: 500;
+  text-transform: uppercase;
+}
