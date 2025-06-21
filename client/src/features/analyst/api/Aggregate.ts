@@ -1,3 +1,4 @@
+import { validateResponse } from '@/shared/api';
 import { isStatistic, type Statistic } from '@/shared/types';
 
 export const fetchAggregate = async (file: File, onIntermediateData: (data: Statistic) => void): Promise<Statistic> => {
@@ -12,9 +13,9 @@ export const fetchAggregate = async (file: File, onIntermediateData: (data: Stat
     body: formData,
   });
 
-  if (!response.ok) {
-    throw new Error(`Сетевая ошибка: ${response.status} ${response.statusText}`);
-  }
+  await validateResponse(response).catch((error) => {
+    throw error;
+  });
 
   if (!response.body) {
     throw new Error('Получен некорректный ответ от сервера');
