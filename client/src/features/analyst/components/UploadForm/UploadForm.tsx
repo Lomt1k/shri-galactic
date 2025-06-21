@@ -3,6 +3,7 @@ import { useCallback, useState, type FC, useRef, memo } from 'react';
 import { Button, StatisticCardList, UploadButton } from '@/shared/components';
 import { fetchAggregate } from '../../api';
 import type { Statistic } from '@/shared/types';
+import { useHistoryState } from '@/features/history/store/HistoryStore';
 
 const UploadForm: FC = () => {
   const [file, setFile] = useState<File | null>(null);
@@ -14,6 +15,7 @@ const UploadForm: FC = () => {
   const [stats, setStats] = useState<Statistic>();
   const formRef = useRef<HTMLFormElement>(null);
   const dropZoneRef = useRef<HTMLDivElement>(null);
+  const { add: addStatisticToHistory } = useHistoryState();
 
   const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
@@ -66,7 +68,7 @@ const UploadForm: FC = () => {
       setIsLoaded(true);
       setMessage('готово!');
       setStats(stats);
-      // TODO: add stats to history
+      addStatisticToHistory(stats, file.name);
     } catch (error: unknown) {
       setMessage(error!.toString());
       setIsLoading(false);

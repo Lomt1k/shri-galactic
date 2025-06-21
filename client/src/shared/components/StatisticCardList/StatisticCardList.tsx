@@ -2,7 +2,7 @@ import type { Statistic } from '@/shared/types';
 import styles from './StatisticCardList.module.css';
 import { useMemo, type FC } from 'react';
 import StatisticCard from '../StatisticCard/StatisticCard';
-import { getDayOfMonthString } from '@/utils/dateHelper';
+import { getDayOfMonthString } from '@/shared/utils/dateHelper';
 
 type StatisticCardListProps = {
   data: Statistic;

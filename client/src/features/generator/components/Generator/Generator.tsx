@@ -2,7 +2,7 @@ import { useCallback, useState, type FC } from 'react';
 import styles from './Generator.module.css';
 import { Button, Container, UploadButton } from '@/shared/components';
 import { fetchReport } from '../../api';
-import { downloadBlob } from '@/utils/downloadHelper';
+import { downloadBlob } from '@/shared/utils/downloadHelper';
 
 const Generator: FC = () => {
   const [isLoading, setIsLoading] = useState(false);
