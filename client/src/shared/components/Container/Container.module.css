@@ -4,3 +4,9 @@
   padding: 0 40px;
   margin: 0 auto;
 }
+
+.container--grow {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}

@@ -1,0 +1,23 @@
+.statistic-card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.statistic-card-list--grid {
+  display: block;
+  column-count: 2;
+  column-gap: 40px;
+  column-rule: none;
+  max-height: 500px;
+  overflow: hidden;
+}
+
+.statistic-card-list--grid li {
+  break-inside: avoid;
+  page-break-inside: avoid;
+  margin: 0 0 10px;
+}

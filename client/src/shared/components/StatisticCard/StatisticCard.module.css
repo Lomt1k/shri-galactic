@@ -1,0 +1,26 @@
+.statistic-card {
+  padding: 20px;
+  border-radius: 24px;
+  background-color: var(--color-blue-chalk);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.statistic-card__value {
+  color: var(--color-maire);
+  font-size: 40px;
+  line-height: 100%;
+  font-weight: 500;
+}
+
+.statistic-card__desc {
+  color: var(--color-maire);
+  font-size: 20px;
+  line-height: 100%;
+}
+
+.statistic-card--secondary {
+  background-color: var(--color-white);
+}

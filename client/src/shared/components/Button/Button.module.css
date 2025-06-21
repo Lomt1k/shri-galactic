@@ -1,0 +1,25 @@
+.button {
+  background-color: var(--color-shamrock);
+  color: var(--color-maire);
+  font-size: 35px;
+  line-height: 110%;
+  font-weight: 500;
+  font-family: var(--ff-main);
+  padding: 20px 27px;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  transition: background-color var(--transition-300);
+}
+
+.button:hover,
+.button:focus-visible {
+  background-color: var(--color-heliotrope);
+}
+
+.button:disabled {
+  background-color: var(--color-silver);
+  color: var(--color-grey);
+  cursor: default;
+}
