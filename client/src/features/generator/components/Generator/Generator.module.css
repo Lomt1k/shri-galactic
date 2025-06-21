@@ -1,0 +1,12 @@
+.generator__wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.generator__text {
+  color: var(--color-maire);
+  font-size: 30px;
+  line-height: 110%;
+}

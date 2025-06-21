@@ -13,8 +13,8 @@
   font-family: var(--ff-main);
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 20px;
+  font-size: 30px;
+  line-height: 110%;
   color: var(--color-maire);
   background-color: var(--color-selago);
 }

@@ -49,7 +49,7 @@ const UploadButton: FC<UploadButtonProps> = ({
         <button
           className={styles['upload-button__btn']}
           type="button"
-          disabled={!!result}
+          disabled={!!result || isLoading}
           onClick={() => inputRef.current?.click()}
         >
           {isLoading ? <Loader /> : (result ?? 'Загрузить файл')}

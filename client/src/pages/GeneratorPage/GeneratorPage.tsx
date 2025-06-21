@@ -1,7 +1,12 @@
+import { Generator } from '@/features/generator/components';
 import type { FC } from 'react';
 
 const GeneratorPage: FC = () => {
-  return <main>GENERATOR PAGE</main>;
+  return (
+    <main>
+      <Generator />
+    </main>
+  );
 };
 
 export default GeneratorPage;

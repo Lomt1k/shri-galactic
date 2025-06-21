@@ -70,23 +70,24 @@
   background-color: var(--color-heliotrope);
 }
 
-.upload-button--error .upload-button__btn {
-  background-color: var(--color-safety-orange);
+.upload-button--loading {
+  align-items: stretch;
+}
+
+.upload-button--loading .upload-button__btn {
+  background-color: var(--color-heliotrope);
+  padding: 10px;
+  width: 100%;
 }
 
 .upload-button--loaded .upload-button__btn {
   background-color: var(--color-white-ice);
 }
 
+.upload-button--error .upload-button__btn {
+  background-color: var(--color-safety-orange);
+}
+
 .upload-button--error .upload-button__message {
   color: var(--color-safety-orange);
-}
-
-.upload-button--loading {
-  align-items: stretch;
-}
-
-.upload-button--loading .upload-button__btn {
-  padding: 10px;
-  width: 100%;
 }
