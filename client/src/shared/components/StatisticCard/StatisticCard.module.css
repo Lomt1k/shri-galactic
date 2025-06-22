@@ -13,12 +13,14 @@
   font-size: 40px;
   line-height: 100%;
   font-weight: 500;
+  font-family: var(--ff-main);
 }
 
 .statistic-card__desc {
   color: var(--color-maire);
   font-size: 20px;
   line-height: 100%;
+  font-family: var(--ff-main);
   text-transform: lowercase;
 }
 
