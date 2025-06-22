@@ -2,6 +2,8 @@
   /* Colors */ 
   --color-white: #FFFFFF;
   --color-black: #000000;
+  --color-black-30: rgba(0, 0, 0, 0.3);
+  --color-black-60: rgba(0, 0, 0, 0.6);
   --color-maire: #201B10;
   --color-selago: #FCE2FF;
   --color-heliotrope: #CB81FF;
@@ -11,6 +13,7 @@
   --color-grey: #787878;
   --color-white-ice: #D4FAE6;
   --color-safety-orange: #FF5F00;
+  --color-golden: #FCE300;
 
 
   /* Typography */

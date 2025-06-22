@@ -33,7 +33,7 @@
 
 .upload-button__btn:hover,
 .upload-button__btn:focus-visible {
-  background-color: var(--color-white-ice);
+  background-color: var(--color-golden);
 }
 
 .upload-button__btn:disabled {

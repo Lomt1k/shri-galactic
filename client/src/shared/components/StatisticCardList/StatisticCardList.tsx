@@ -2,26 +2,27 @@ import type { Statistic } from '@/shared/types';
 import styles from './StatisticCardList.module.css';
 import { useMemo, type FC } from 'react';
 import StatisticCard from '../StatisticCard/StatisticCard';
-import { getDayOfMonthString } from '@/utils/dateHelper';
+import { getDayOfMonthString } from '@/shared/utils/dateHelper';
 
 type StatisticCardListProps = {
   data: Statistic;
   columns?: boolean;
 };
 
-type RowData = [string, string];
+type RowData = [description: string, value: string];
 
 const prepareRows = (data: Statistic): RowData[] => {
   const result: RowData[] = [];
+  const rounded = (value: number) => Math.round(value).toString();
 
-  result.push(['общие расходы в галактических кредитах', data.total_spend_galactic.toString()]);
-  result.push(['количество обработанных записей', data.rows_affected.toString()]);
-  if (data.less_spent_at) result.push(['день года с минимальными расходами', getDayOfMonthString(data.less_spent_at)]);
-  if (data.big_spent_civ) result.push(['цивилизация с максимальными расходами', data.big_spent_civ.toString()]);
-  if (data.less_spent_civ) result.push(['цивилизация с минимальными расходами', data.less_spent_civ.toString()]);
-  if (data.big_spent_at) result.push(['день года с максимальными расходами', getDayOfMonthString(data.big_spent_at)]);
-  if (data.big_spent_value) result.push(['максимальная сумма расходов за день', data.big_spent_value.toString()]);
-  result.push(['средние расходы в галактических кредитах', data.average_spend_galactic.toString()]);
+  result.push(['Общие расходы в галактических кредитах', rounded(data.total_spend_galactic)]);
+  result.push(['Количество обработанных записей', rounded(data.rows_affected)]);
+  if (data.less_spent_at) result.push(['День года с минимальными расходами', getDayOfMonthString(data.less_spent_at)]);
+  if (data.big_spent_civ) result.push(['Цивилизация с максимальными расходами', data.big_spent_civ]);
+  if (data.less_spent_civ) result.push(['Цивилизация с минимальными расходами', data.less_spent_civ]);
+  if (data.big_spent_at) result.push(['День года с максимальными расходами', getDayOfMonthString(data.big_spent_at)]);
+  if (data.big_spent_value) result.push(['Максимальная сумма расходов за день', rounded(data.big_spent_value)]);
+  result.push(['Средние расходы в галактических кредитах', rounded(data.average_spend_galactic)]);
 
   return result;
 };

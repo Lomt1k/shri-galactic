@@ -3,6 +3,8 @@ import { useCallback, useState, type FC, useRef, memo } from 'react';
 import { Button, StatisticCardList, UploadButton } from '@/shared/components';
 import { fetchAggregate } from '../../api';
 import type { Statistic } from '@/shared/types';
+import { useHistoryState } from '@/features/history/store/HistoryStore';
+import { subscribeBeforeUnload } from '@/shared/utils/subscribeBeforeUnload';
 
 const UploadForm: FC = () => {
   const [file, setFile] = useState<File | null>(null);
@@ -14,6 +16,7 @@ const UploadForm: FC = () => {
   const [stats, setStats] = useState<Statistic>();
   const formRef = useRef<HTMLFormElement>(null);
   const dropZoneRef = useRef<HTMLDivElement>(null);
+  const { add: addStatisticToHistory } = useHistoryState();
 
   const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
@@ -60,18 +63,21 @@ const UploadForm: FC = () => {
     if (!file) return;
     setIsLoading(true);
     setMessage('идёт парсинг файла');
+    const unsubscribeBeforeUnload = subscribeBeforeUnload();
     try {
       const stats = await fetchAggregate(file, setStats);
       setIsLoading(false);
       setIsLoaded(true);
       setMessage('готово!');
       setStats(stats);
-      // TODO: add stats to history
+      addStatisticToHistory(stats, file.name);
     } catch (error: unknown) {
       setMessage(error!.toString());
       setIsLoading(false);
       setIsError(true);
+      addStatisticToHistory(null, file.name);
     }
+    unsubscribeBeforeUnload();
   };
 
   const classNames =

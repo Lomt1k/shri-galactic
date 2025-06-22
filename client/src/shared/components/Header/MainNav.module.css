@@ -16,23 +16,17 @@
   line-height: 110%;
   text-decoration: none;
   outline: none;
-  transition: color var(--transition-300);
 }
 
 .main-nav__link-content {
   display: flex;
   gap: 16px;
-  transition: border var(--transition-300);
-}
-
-.main-nav__link:hover,
-.main-nav__link:focus-visible {
-  color: var(--color-heliotrope);
+  transition: background-color var(--transition-300);
 }
 
 .main-nav__link:hover .main-nav__link-content,
 .main-nav__link:focus-visible .main-nav__link-content {
-  border-color: var(--color-heliotrope);
+  background-color: var(--color-golden);
 }
 
 .main-nav__link--active {

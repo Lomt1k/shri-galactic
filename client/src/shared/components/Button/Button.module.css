@@ -13,9 +13,15 @@
   transition: background-color var(--transition-300);
 }
 
+.button--secondary {
+  background-color: var(--color-maire);
+  color: var(--color-white);
+}
+
 .button:hover,
 .button:focus-visible {
-  background-color: var(--color-heliotrope);
+  background-color: var(--color-golden);
+  color: var(--color-maire);
 }
 
 .button:disabled {

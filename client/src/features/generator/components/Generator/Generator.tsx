@@ -2,7 +2,8 @@ import { useCallback, useState, type FC } from 'react';
 import styles from './Generator.module.css';
 import { Button, Container, UploadButton } from '@/shared/components';
 import { fetchReport } from '../../api';
-import { downloadBlob } from '@/utils/downloadHelper';
+import { downloadBlob } from '@/shared/utils/downloadHelper';
+import { subscribeBeforeUnload } from '@/shared/utils/subscribeBeforeUnload';
 
 const Generator: FC = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -11,6 +12,7 @@ const Generator: FC = () => {
 
   const handleClick = useCallback(async () => {
     setIsLoading(true);
+    const unsubscribeBeforeUnload = subscribeBeforeUnload();
     try {
       const blob = await fetchReport();
       downloadBlob(blob, 'report.csv');
@@ -21,6 +23,7 @@ const Generator: FC = () => {
       setIsLoaded(false);
       setError(error!.toString());
     }
+    unsubscribeBeforeUnload();
   }, []);
 
   const handleReset = useCallback(() => {
