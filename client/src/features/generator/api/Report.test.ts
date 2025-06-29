@@ -12,7 +12,7 @@ describe('API fetchReport', () => {
     vi.mocked(validateResponse).mockResolvedValue(undefined);
   });
 
-  test('должен успешно получить Blob', async () => {
+  test('возвращает Blob при корректном ответе', async () => {
     const mockBlob = new Blob(['test content'], { type: 'text/plain' });
 
     global.fetch = vi.fn().mockResolvedValue({
@@ -27,7 +27,7 @@ describe('API fetchReport', () => {
     expect(result.type).toBe('text/plain');
   });
 
-  test('должен вызвать validateResponse с response', async () => {
+  test('вызывает validateResponse', async () => {
     const mockBlob = new Blob(['content']);
     const mockResponse = {
       ok: true,
@@ -41,7 +41,7 @@ describe('API fetchReport', () => {
     expect(validateResponse).toHaveBeenCalledWith(mockResponse);
   });
 
-  test('должен пробросить ошибку из validateResponse', async () => {
+  test('пробрасывает ошибку из validateResponse', async () => {
     const error = new Error('Network error');
     vi.mocked(validateResponse).mockRejectedValue(error);
 
@@ -53,7 +53,7 @@ describe('API fetchReport', () => {
     await expect(fetchReport()).rejects.toThrow(error);
   });
 
-  test('должен выбросить ошибку, если blob() вернул undefined', async () => {
+  test('выбрасывает ошибку, если blob() вернул undefined', async () => {
     global.fetch = vi.fn().mockResolvedValue({
       ok: true,
       blob: vi.fn().mockResolvedValue(undefined),
