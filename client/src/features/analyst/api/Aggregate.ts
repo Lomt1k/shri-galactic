@@ -41,7 +41,13 @@ export const fetchAggregate = async (file: File, onIntermediateData: (data: Stat
       const trimmedLine = line.trim();
       if (!trimmedLine) continue;
 
-      const json = JSON.parse(trimmedLine);
+      let json: unknown;
+      try {
+        json = JSON.parse(trimmedLine);
+      } catch {
+        throw new Error('Некорректный JSON');
+      }
+
       if (!isStatistic(json)) throw new Error('Некорректный JSON');
       lastStats = json;
       onIntermediateData(lastStats);
@@ -50,7 +56,13 @@ export const fetchAggregate = async (file: File, onIntermediateData: (data: Stat
 
   // Обрабатываем остаток буфера
   if (buffer.trim()) {
-    const json = JSON.parse(buffer.trim());
+    let json: unknown;
+    try {
+      json = JSON.parse(buffer.trim());
+    } catch {
+      throw new Error('Некорректный JSON');
+    }
+
     if (!isStatistic(json)) throw new Error('Некорректный JSON');
     lastStats = json;
     onIntermediateData(lastStats);

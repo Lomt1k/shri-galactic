@@ -3,7 +3,7 @@ import styles from './Modal.module.css';
 import { createPortal } from 'react-dom';
 import { IconCancel } from '@/shared/icons';
 
-type ModalProps = {
+export type ModalProps = {
   children: ReactNode;
   onClickClose: () => void;
   className?: string;
@@ -11,14 +11,20 @@ type ModalProps = {
 
 const Modal: FC<ModalProps> = ({ children, onClickClose, className }) => {
   return createPortal(
-    <div className={styles.modal} onClick={onClickClose}>
+    <div data-testid="modal" className={styles.modal} onClick={onClickClose}>
       <div className={styles.modal__area}>
         <div
           className={styles.modal__content + (className ? ` ${className}` : '')}
           onClick={(e) => e.stopPropagation()}
         >
           {children}
-          <button className={styles.modal__close} type="button" onClick={onClickClose} aria-label="Закрыть окно">
+          <button
+            data-testid="modal__close"
+            className={styles.modal__close}
+            type="button"
+            onClick={onClickClose}
+            aria-label="Закрыть окно"
+          >
             <IconCancel />
           </button>
         </div>

@@ -8,5 +8,11 @@ export const fetchReport = async (): Promise<Blob> => {
   await validateResponse(response).catch((error) => {
     throw error;
   });
-  return await response.blob();
+
+  const blob = await response.blob();
+  if (!blob) {
+    throw new Error('Failed to retrieve blob data');
+  }
+
+  return blob;
 };

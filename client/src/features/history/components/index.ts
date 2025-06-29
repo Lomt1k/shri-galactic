@@ -1,2 +1,2 @@
 export { History } from './History';
-export { HistoryRow } from './HistoryRow';
+export { HistoryRow, type HistoryRowProps } from './HistoryRow';

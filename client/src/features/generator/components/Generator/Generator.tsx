@@ -32,14 +32,21 @@ const Generator: FC = () => {
   }, []);
 
   return (
-    <section>
+    <section data-testid="generator-section">
       <h1 className="visually-hidden">CSV Генератор</h1>
       <Container>
-        <div className={styles.generator__wrapper}>
-          <p className={styles.generator__text}>Сгенерируйте готовый csv-файл нажатием одной кнопки</p>
-          {!isLoading && !isLoaded && !error && <Button onClick={handleClick}>Начать генерацию</Button>}
+        <div className={styles.generator__wrapper} data-testid="generator-wrapper">
+          <p className={styles.generator__text} data-testid="generator-text">
+            Сгенерируйте готовый csv-файл нажатием одной кнопки
+          </p>
+          {!isLoading && !isLoaded && !error && (
+            <Button data-testid="generator-button" onClick={handleClick}>
+              Начать генерацию
+            </Button>
+          )}
           {(isLoading || isLoaded || error) && (
             <UploadButton
+              data-testid="generator-upload-button"
               isLoading={isLoading}
               isLoaded={isLoaded}
               isError={!!error}

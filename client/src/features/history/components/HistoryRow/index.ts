@@ -1,1 +1,1 @@
-export { default as HistoryRow } from './HistoryRow';
+export { default as HistoryRow, type HistoryRowProps } from './HistoryRow';

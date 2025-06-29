@@ -1,1 +1,1 @@
-export { default as StatisticCardList } from './StatisticCardList';
+export { default as StatisticCardList, type StatisticCardListProps, type RowData } from './StatisticCardList';
