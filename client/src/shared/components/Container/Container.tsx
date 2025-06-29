@@ -1,7 +1,7 @@
 import styles from './Container.module.css';
 import type { FC, ReactNode } from 'react';
 
-type ContainerProps = {
+export type ContainerProps = {
   children: ReactNode;
   grow?: boolean;
 };

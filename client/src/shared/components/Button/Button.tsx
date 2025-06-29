@@ -1,7 +1,7 @@
 import { memo, type ButtonHTMLAttributes, type FC, type ReactNode } from 'react';
 import styles from './Button.module.css';
 
-type ButtonProps = {
+export type ButtonProps = {
   children: ReactNode;
   onClick?: () => void;
   submit?: boolean;
@@ -12,7 +12,13 @@ const Button: FC<ButtonProps> = ({ children, onClick, submit, secondary, ...rest
   const classNames = styles.button + (secondary === true ? ` ${styles['button--secondary']}` : '');
 
   return (
-    <button className={classNames} onClick={onClick} type={submit === true ? 'submit' : 'button'} {...rest}>
+    <button
+      data-testid="button"
+      className={classNames}
+      onClick={onClick}
+      type={submit === true ? 'submit' : 'button'}
+      {...rest}
+    >
       {children}
     </button>
   );

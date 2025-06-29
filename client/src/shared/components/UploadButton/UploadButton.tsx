@@ -3,7 +3,7 @@ import styles from './UploadButton.module.css';
 import { IconCancel } from '@/shared/icons';
 import { Loader } from '@/shared/components';
 
-type UploadButtonProps = {
+export type UploadButtonProps = {
   isLoading: boolean;
   isLoaded: boolean;
   isError: boolean;
@@ -39,6 +39,7 @@ const UploadButton: FC<UploadButtonProps> = ({
   return (
     <div className={classNames}>
       <input
+        data-testid="upload-btn-file-input"
         className={styles['upload-button__input']}
         type="file"
         accept=".csv"
@@ -47,20 +48,28 @@ const UploadButton: FC<UploadButtonProps> = ({
       />
       <div className={styles['upload-button__content']}>
         <button
+          data-testid="upload-btn"
           className={styles['upload-button__btn']}
           type="button"
           disabled={!!result || isLoading}
           onClick={() => inputRef.current?.click()}
         >
-          {isLoading ? <Loader /> : (result ?? 'Загрузить файл')}
+          {isLoading ? <Loader data-testid="upload-btn-loader" /> : (result ?? 'Загрузить файл')}
         </button>
         {result && !isLoading && (
-          <button className={styles['upload-button__reset']} type="button" onClick={onReset}>
+          <button
+            data-testid="upload-btn-reset"
+            className={styles['upload-button__reset']}
+            type="button"
+            onClick={onReset}
+          >
             <IconCancel />
           </button>
         )}
       </div>
-      <span className={styles['upload-button__message']}>{message ?? 'или перетащите сюда'}</span>
+      <span data-testid="upload-btn-message" className={styles['upload-button__message']}>
+        {message ?? 'или перетащите сюда'}
+      </span>
     </div>
   );
 };

@@ -3,7 +3,7 @@ import { useCallback, useState, type FC, useRef, memo } from 'react';
 import { Button, StatisticCardList, UploadButton } from '@/shared/components';
 import { fetchAggregate } from '../../api';
 import type { Statistic } from '@/shared/types';
-import { useHistoryState } from '@/features/history/store/HistoryStore';
+import { useHistoryStore } from '@/features/history/store/HistoryStore';
 import { subscribeBeforeUnload } from '@/shared/utils/subscribeBeforeUnload';
 
 const UploadForm: FC = () => {
@@ -16,7 +16,7 @@ const UploadForm: FC = () => {
   const [stats, setStats] = useState<Statistic>();
   const formRef = useRef<HTMLFormElement>(null);
   const dropZoneRef = useRef<HTMLDivElement>(null);
-  const { add: addStatisticToHistory } = useHistoryState();
+  const { add: addStatisticToHistory } = useHistoryStore();
 
   const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
@@ -76,8 +76,9 @@ const UploadForm: FC = () => {
       setIsLoading(false);
       setIsError(true);
       addStatisticToHistory(null, file.name);
+    } finally {
+      unsubscribeBeforeUnload();
     }
-    unsubscribeBeforeUnload();
   };
 
   const classNames =
@@ -97,6 +98,7 @@ const UploadForm: FC = () => {
           Загрузите <b>csv</b> и получите <b>полную информацию</b> о нём за сверхнизкое время
         </p>
         <div
+          data-testid="upload-form__dropzone"
           ref={dropZoneRef}
           className={styles['upload-form__dropzone']}
           onDragOver={handleDragOver}
